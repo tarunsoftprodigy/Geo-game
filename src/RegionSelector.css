@@ -1,0 +1,264 @@
+.region-selector-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #FFE66D 0%, #FF6B9D 25%, #C06C84 50%, #6C5B7B 75%, #355C7D 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    padding: 20px;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.fun-container {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.fun-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 16px;
+    text-shadow:
+        4px 4px 0 #FF6B9D,
+        8px 8px 0 rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+.fun-subtitle {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 60px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.region-cards-fun {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.region-card-fun {
+    background: white;
+    border-radius: 32px;
+    padding: 40px 30px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        0 0 0 8px var(--card-color);
+    transition: all 0.3s ease;
+    border: 6px solid white;
+}
+
+.region-card-fun::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--card-color) 0%, transparent 70%);
+    opacity: 0.1;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+.card-emoji {
+    font-size: 6rem;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+}
+
+.card-flag {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.card-name {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--card-color);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card-description {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.card-button {
+    background: var(--card-color);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    display: inline-block;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.region-card-fun:hover .card-button {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.region-card-fun:active .card-button {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.fun-stars {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+/* Floating animation for cards */
+.region-card-fun {
+    animation: float 3s ease-in-out infinite;
+}
+
+.region-card-fun:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.region-card-fun:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .fun-title {
+        font-size: 2.2rem;
+        text-shadow:
+            3px 3px 0 #FF6B9D,
+            6px 6px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .fun-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+
+    .region-cards-fun {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .region-card-fun {
+        padding: 35px 25px;
+    }
+
+    .card-emoji {
+        font-size: 4.5rem;
+    }
+
+    .card-flag {
+        font-size: 2.5rem;
+    }
+
+    .card-name {
+        font-size: 2rem;
+    }
+
+    .card-description {
+        font-size: 1rem;
+    }
+
+    .card-button {
+        font-size: 1rem;
+        padding: 14px 28px;
+    }
+
+    .fun-stars {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .fun-title {
+        font-size: 1.8rem;
+        text-shadow:
+            2px 2px 0 #FF6B9D,
+            4px 4px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .fun-subtitle {
+        font-size: 1rem;
+    }
+
+    .card-emoji {
+        font-size: 4rem;
+    }
+
+    .card-flag {
+        font-size: 2rem;
+    }
+
+    .card-name {
+        font-size: 1.7rem;
+    }
+
+    .region-card-fun {
+        padding: 30px 20px;
+    }
+}
